@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/HoneyPhysics/Nodes/EntityBody2D.gd" type="Script" id=1]
+
+[node name="EntityBody2D" type="KinematicBody2D"]
+script = ExtResource( 1 )
