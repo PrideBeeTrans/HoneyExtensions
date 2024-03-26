@@ -1,8 +1,17 @@
 HoneyExtensions is an **add-on for Godot 3.x**.
 
+## Description
+HoneyExtensions is collection of plugins
+
 # Classes
 
 |Linkable Node Name|Description|Languages
 |-|-|-|
 |[BitArray](addons/HoneyLib/References/BitArray.gd)|A BitArray.|GDScript
-|[RangeMap](addons/HoneyLib/References/RangeMap.gd)|.|GDScript
+
+# Nodes
+
+|Node|Description|Type|
+|-|-|-|
+|[Stats]()|Stats Component.|General|GDScript
+|[HitBox]()|HitBox.|General|GDScript
