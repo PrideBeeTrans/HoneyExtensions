@@ -1,2 +1,0 @@
-class_name FallingPlatform2D
-extends KinematicBody2D
