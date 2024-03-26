@@ -14,4 +14,4 @@ HoneyExtensions is collection of plugins
 |Node|Description|Type|
 |-|-|-|
 |[Stats]()|Stats Component.|General|GDScript
-|[HitBox]()|HitBox.|General|2D,3D|GDScript
+|[HitBox]()|HitBox.|2D,3D|GDScript
