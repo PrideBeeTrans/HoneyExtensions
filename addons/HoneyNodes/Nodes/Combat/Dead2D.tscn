@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/HoneyNodes/Nodes/Combat/Dead2D.gd" type="Script" id=1]
+
+[node name="Dead2D" type="Node2D"]
+script = ExtResource( 1 )
+stats_path = NodePath("")
+scene = null
+scenes = {
+}
+local_position = false

@@ -1,0 +1,29 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float loc = 0.6;
+uniform float rotation = 0.785;
+uniform float width = 0.24;
+uniform float soft = 1.55;
+uniform float bright = 1.09;
+uniform float gloss = 1.8;
+uniform float speed = 0.31;
+uniform vec4 shineColor : hint_color = vec4(1.0);
+
+vec4 shine(vec4 _color, vec2 _uv, float _location, float _rotRadians, float _width, float _soft, float _bright, float _gloss){
+    vec2 angle = vec2(cos(_rotRadians), sin(_rotRadians));
+    float normPos = dot(_uv, angle);
+    float normal = 1.0 - min(max(abs((normPos - _location) / _width), 0.0), 1.0);
+    float shinePower = smoothstep(0.0, _soft * 2.0, normal);
+    vec3 reflectColor = mix(vec3(1.0), _color.rgb * 10.0, _gloss);
+    _color.rgb += _color.a * (shinePower / 2.0) * _bright * reflectColor * shineColor.rgb;
+    return _color;
+}
+
+void fragment(){
+    vec2 uv = UV;
+    vec4 col = textureLod(TEXTURE, uv, 0);
+    COLOR = shine(col, uv, loc, rotation, width, soft, bright, gloss);
+}"

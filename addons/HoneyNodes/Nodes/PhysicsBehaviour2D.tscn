@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/HoneyNodes/Nodes/PhysicsBehaviour2D.gd" type="Script" id=1]
+
+[node name="PhysicsBehaviour2D" type="Node2D"]
+script = ExtResource( 1 )
+target_path = NodePath("")
+behaviour_mode = 0
+move_data = null
+gravity_data = null
+max_velocity = Vector2( 0, 0 )

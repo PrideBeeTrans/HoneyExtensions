@@ -1,0 +1,2 @@
+class_name Barrel2D
+extends InteractionArea2D
