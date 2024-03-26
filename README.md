@@ -6,6 +6,3 @@ HoneyExtensions is an **add-on for Godot 3.x**.
 |-|-|-|
 |[BitArray](addons/HoneyLib/References/BitArray.gd)|A BitArray.|GDScript
 |[RangeMap](addons/HoneyLib/References/RangeMap.gd)|.|GDScript
-|[SparseArray]()|.|GDScript
-|[SparseSet]()|.|GDScript
-|[StringUtils]()|.|GDScript
