@@ -2,14 +2,17 @@ tool
 class_name CountTimer
 extends TimerCore
 
+const EMPTY_VALUE := 0
+const MIN_VALUE := 1
+
 signal time_count_started()
 signal time_count_changed(count)
 signal time_count_finished()
 
 enum CountModes{INCREMENT, DECREMENT}
 
-var count := 0 setget set_count,get_count
-var counter := 0 setget set_counter,get_counter
+var count := EMPTY_VALUE setget set_count,get_count
+var counter := EMPTY_VALUE setget set_counter,get_counter
 var count_mode : int = CountModes.INCREMENT setget set_count_mode,get_count_mode
 
 
@@ -47,6 +50,14 @@ func get_count_mode() -> int:
 	return count_mode
 
 
+func is_mode_increment() -> bool:
+	return get_count_mode() == CountModes.INCREMENT
+
+
+func is_mode_decrement() -> bool:
+	return get_count_mode() == CountModes.DECREMENT
+
+
 func _connect_signals() -> void:
 	connect("time_started", self, "_on_time_started")
 	connect("time_repeat_counted", self, "_on_time_repeat_counted")
@@ -54,18 +65,18 @@ func _connect_signals() -> void:
 
 
 func _on_time_started() -> void:
-	if count_mode == CountModes.INCREMENT:
-		counter = 0
-	elif count_mode == CountModes.DECREMENT:
-		counter = count
+	if is_mode_increment() == true:
+		set_counter(EMPTY_VALUE)
+	elif is_mode_decrement() == true:
+		set_counter(get_count())
 	emit_signal("time_count_changed", counter)
 
 
 func _on_time_repeat_counted() -> void:
-	if count_mode == CountModes.INCREMENT:
-		counter += 1
-	elif count_mode == CountModes.DECREMENT:
-		counter -= 1
+	if is_mode_increment() == true:
+		set_counter(get_counter() + MIN_VALUE)
+	elif is_mode_decrement() == true:
+		set_counter(get_counter() - MIN_VALUE)
 	emit_signal("time_count_changed", counter)
 
 
