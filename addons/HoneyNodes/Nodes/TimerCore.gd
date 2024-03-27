@@ -10,8 +10,10 @@ signal time_restarted()
 signal time_repeat_count(count)
 signal time_repeat_counted()
 signal time_repeat_finished()
+signal time_state_changed(new_mode)
 
 enum ProcessMode{IDLE, PHYSICS}
+enum TimerStates{ACTIVE, PAUSED, STOPPED, FINISHED, RESUME, RESTART}
 
 var auto_start := false setget set_auto_start,is_auto_start
 var repeat_count := 0 setget set_repeat_count,get_repeat_count
@@ -31,8 +33,11 @@ var active := false setget set_active,is_active
 var paused := false setget set_paused,is_paused
 var repeat_counter := 0 setget set_repeat_counter,get_repeat_counter
 
+var timer_state : int = TimerStates.STOPPED setget set_timer_state,get_timer_state
+
 
 func _ready() -> void:
+	randomize()
 	if Engine.is_editor_hint() == true:
 		return
 	_setup_process_mode()
@@ -95,6 +100,7 @@ func _tick(delta: float) -> void:
 		else:
 			set_time_left(get_wait_time())
 		emit_signal("time_finished")
+		set_timer_state(TimerStates.FINISHED)
 
 
 func start() -> void:
@@ -102,16 +108,27 @@ func start() -> void:
 	set_active(true)
 	set_elapsed_time(0.0)
 	emit_signal("time_started")
+	set_timer_state(TimerStates.ACTIVE)
+
+
+func start_in(new_wait_time: float = get_wait_time()) -> void:
+	set_time_left(new_wait_time)
+	set_active(true)
+	set_elapsed_time(0.0)
+	emit_signal("time_started")
+	set_timer_state(TimerStates.ACTIVE)
 
 
 func stop() -> void:
 	set_active(false)
 	emit_signal("time_stopped")
+	set_timer_state(TimerStates.STOPPED)
 
 
 func pause() -> void:
 	set_paused(true)
 	emit_signal("time_paused")
+	set_timer_state(TimerStates.PAUSED)
 
 
 func resume() -> void:
@@ -260,3 +277,36 @@ func set_paused(value: bool) -> void:
 
 func is_paused() -> bool:
 	return paused
+
+
+func set_timer_state(value: int) -> void:
+	timer_state = value
+	emit_signal("time_state_changed", get_timer_state())
+	
+
+func get_timer_state() -> int:
+	return timer_state
+
+
+func is_state_active() -> bool:
+	return get_timer_state() == TimerStates.ACTIVE
+
+
+func is_state_paused() -> bool:
+	return get_timer_state() == TimerStates.ACTIVE
+
+
+func is_state_stopped() -> bool:
+	return get_timer_state() == TimerStates.STOPPED
+
+
+func is_state_finished() -> bool:
+	return get_timer_state() == TimerStates.FINISHED
+
+
+func is_state_resume() -> bool:
+	return get_timer_state() == TimerStates.RESUME
+
+
+func is_state_restart() -> bool:
+	return get_timer_state() == TimerStates.RESTART
