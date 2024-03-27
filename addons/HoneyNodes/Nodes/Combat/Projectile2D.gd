@@ -1,2 +1,0 @@
-class_name Projectile2D
-extends Component2D
