@@ -31,6 +31,39 @@ var _on_loop_completed := {"func_ref":null,"args":[]}
 var _on_completed := {"func_ref":null,"args":[]}
 
 
+
+func _on_started() -> void:
+	if _get_on_started_func_ref() != null:
+		if _get_on_started_args().empty():
+			_get_on_started_func_ref().call_func()
+		else:
+			_get_on_started_func_ref().call_funcv(_get_on_started_args())
+
+
+func _on_update() -> void:
+	if _get_on_update_func_ref() != null:
+		if _get_on_update_args().empty():
+			_get_on_update_func_ref().call_func()
+		else:
+			_get_on_update_func_ref().call_funcv(_get_on_update_args())
+
+
+func _on_completed() -> void:
+	if _get_on_completed_func_ref() != null:
+		if _get_on_completed_args().empty():
+			_get_on_completed_func_ref().call_func()
+		else:
+			_get_on_completed_func_ref().call_funcv(_get_on_completed_args())
+
+
+func _on_loop_completed() -> void:
+	if _get_on_loop_completed_func_ref() != null:
+		if _get_on_loop_completed_args().empty():
+			_get_on_loop_completed_func_ref().call_func()
+		else:
+			_get_on_loop_completed_func_ref().call_funcv(_get_on_loop_completed_args())
+
+
 func _is_easing_completed() -> bool:
 	return _get_elapsed_time() == _get_duration() and _is_completed() == false
 
@@ -174,3 +207,99 @@ func _set_loop_type(value: String) -> void:
 
 func _get_loop_type() -> String:
 	return _loop_type
+
+
+func _set_on_started(value: Dictionary) -> void:
+	_on_started = value
+
+
+func _get_on_started() -> Dictionary:
+	return _on_started
+
+
+func _set_on_started_func_ref(value: FuncRef) -> void:
+	_on_started["func_ref"] = value
+
+
+func _get_on_started_func_ref() -> FuncRef:
+	return _on_started["func_ref"]
+
+
+func _set_on_started_args(value: Array) -> void:
+	_on_started["args"] = value
+
+
+func _get_on_started_args() -> Array:
+	return _on_started["args"]
+
+
+func _set_on_update(value: Dictionary) -> void:
+	_on_update = value
+
+
+func _get_on_update() -> Dictionary:
+	return _on_update
+
+
+func _set_on_update_func_ref(value: FuncRef) -> void:
+	_on_update["func_ref"] = value
+
+
+func _get_on_update_func_ref() -> FuncRef:
+	return _on_update["func_ref"]
+
+
+func _set_on_update_args(value: Array) -> void:
+	_on_update["args"] = value
+
+
+func _get_on_update_args() -> Array:
+	return _on_update["args"]
+
+
+func _set_on_loop_completed(value: Dictionary) -> void:
+	_on_loop_completed = value
+
+
+func _get_on_loop_completed() -> Dictionary:
+	return _on_loop_completed
+
+
+func _set_on_loop_completed_func_ref(value: FuncRef) -> void:
+	_on_loop_completed["func_ref"] = value
+
+
+func _get_on_loop_completed_func_ref() -> FuncRef:
+	return _on_loop_completed["func_ref"]
+
+
+func _set_on_loop_completed_args(value: Array) -> void:
+	_on_loop_completed["args"] = value
+
+
+func _get_on_loop_completed_args() -> Array:
+	return _on_loop_completed["args"]
+
+
+func _set_on_completed(value: Dictionary) -> void:
+	_on_completed = value
+
+
+func _get_on_completed() -> Dictionary:
+	return _on_completed
+
+
+func _set_on_completed_func_ref(value: FuncRef) -> void:
+	_on_completed["func_ref"] = value
+
+
+func _get_on_completed_func_ref() -> FuncRef:
+	return _on_completed["func_ref"]
+
+
+func _set_on_completed_args(value: Array) -> void:
+	_on_completed["args"] = value
+
+
+func _get_on_completed_args() -> Array:
+	return _on_completed["args"]
