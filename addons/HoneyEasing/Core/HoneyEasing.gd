@@ -7,6 +7,7 @@ static func create_honey_easing(node: Node) -> HoneyEasingData:
 
 
 class HoneyEasingData:
+	const Propertys := preload("res://addons/HoneyEasing/Core/HoneyConstants.gd")
 	const HoneyEasing_Name := "HoneyEasing"
 	const ProcessMode := {
 		"Idle":"Idle",
@@ -44,10 +45,176 @@ class HoneyEasingData:
 			_process_easing()
 	
 	
+	func animate_squash(target: Object,squash_intensity: float,scale_base,duration: float) -> HoneyProperty:
+		var squash_scale
+		if target is Node2D or target is Control:
+			squash_scale = Vector2(1+ squash_intensity,1- squash_intensity)
+		else:
+			squash_scale = Vector3.ONE
+		return animate_scale(target, squash_scale, duration)
+	
+	
+	func animate_stretch(target: Object,stretch_intensity: float,scale_base,duration: float) -> HoneyProperty:
+		var stretch_scale
+		if target is Node2D or target is Control:
+			stretch_scale = Vector2(1- stretch_intensity,1+ stretch_intensity)
+		else:
+			stretch_scale = Vector3.ONE
+		return animate_scale(target, stretch_scale, duration)
+	
+	
+	func animate_rotation_degrees(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_global_rotation_degrees_property(target)
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_rotation_degrees_x(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_global_rotation_degrees_property(target, "x")
+		return animate_property(target, property, to_value, duration)
+
+
+	func animate_rotation_degrees_y(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_global_rotation_degrees_property(target, "y")
+		return animate_property(target, property, to_value, duration)
+		
+		
+	func animate_rotation_degrees_z(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_global_rotation_degrees_property(target, "z")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_local_rotation_degrees(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_rotation_degrees_property(target)
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_local_rotation_degrees_x(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_rotation_degrees_property(target, "x")
+		return animate_property(target, property, to_value, duration)
+
+
+	func animate_local_rotation_degrees_y(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_rotation_degrees_property(target, "y")
+		return animate_property(target, property, to_value, duration)
+		
+		
+	func animate_local_rotation_degrees_z(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_rotation_degrees_property(target, "z")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_rotation(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_global_rotation_property(target)
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_rotation_x(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_global_rotation_property(target, "x")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_rotation_y(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_global_rotation_property(target, "y")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_rotation_z(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_global_rotation_property(target, "z")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_local_rotation(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_rotation_property(target)
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_local_rotation_x(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_rotation_property(target, "x")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_local_rotation_y(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_rotation_property(target, "y")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_local_rotation_z(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_rotation_property(target, "z")
+		return animate_property(target, property, to_value, duration)
+	
+
+	func animate_scale(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_scale_property(target)
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_scale_x(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_scale_property(target, "x")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_scale_y(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_scale_property(target, "y")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_scale_z(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_scale_property(target, "z")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_move(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_position_property(target)
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_move_x(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_position_property(target, "x")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_move_y(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_position_property(target, "y")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_move_z(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_position_property(target, "z")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_local_move(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_position_property(target)
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_local_move_x(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_position_property(target, "x")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_local_move_y(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_position_property(target, "y")
+		return animate_property(target, property, to_value, duration)
+	
+	
+	func animate_local_move_z(target: Object,to_value,duration: float) -> HoneyProperty:
+		var property := Propertys.get_position_property(target, "z")
+		return animate_property(target, property, to_value, duration)
+
+	
 	func animate_property(target: Object,property: NodePath,to_value,duration: float) -> HoneyProperty:
-		var honey_ease_property := HoneyProperty.new(target, property, to_value, duration)
-		_get_honey_easings().append(honey_ease_property)
-		return honey_ease_property
+		if target.get(property) == null:
+			return null
+	
+		if not target.get(property) != typeof(target.get(property)):
+			return null
+		
+		if not property.is_empty() == true:
+			var honey_ease_property := HoneyProperty.new(target, property, to_value, duration)
+			_get_honey_easings().append(honey_ease_property)
+			return honey_ease_property
+		return null
 	
 	
 	func _process_easing() -> void:

@@ -15,6 +15,7 @@ var _elapsed_time := EMPTY_TIME
 var _duration := EMPTY_TIME
 var _delay := EMPTY_TIME
 var _speed_scale := SPEED_SCALE_DEFAULT
+var _id
 
 var _started := false
 var _running := false
