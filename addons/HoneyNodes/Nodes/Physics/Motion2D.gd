@@ -1,6 +1,6 @@
 tool
 class_name Motion2D
-extends Component
+extends Component2D
 
 var actor_path := NodePath() setget set_actor_path,get_actor_path
 
