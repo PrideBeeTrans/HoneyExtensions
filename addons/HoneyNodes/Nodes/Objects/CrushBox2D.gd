@@ -1,2 +1,0 @@
-class_name CrushBox2D
-extends Triggered2D

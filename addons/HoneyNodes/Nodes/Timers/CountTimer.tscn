@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://addons/HoneyNodes/Nodes/Timers/CountTimer.gd" type="Script" id=1]
-
-[node name="CountTimer" type="Node"]
-script = ExtResource( 1 )

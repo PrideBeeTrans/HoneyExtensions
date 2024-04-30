@@ -1,2 +1,0 @@
-class_name DropThru2D
-extends AreaCore2D

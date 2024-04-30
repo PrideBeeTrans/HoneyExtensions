@@ -1,2 +1,0 @@
-class_name Draggable2D
-extends AreaCore2D
