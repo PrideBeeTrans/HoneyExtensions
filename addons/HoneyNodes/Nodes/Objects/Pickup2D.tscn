@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/HoneyNodes/Nodes/Objects/Pickup2D.gd" type="Script" id=1]
+
+[node name="Pickup2D" type="Area2D"]
+collision_mask = 0
+monitoring = false
+script = ExtResource( 1 )

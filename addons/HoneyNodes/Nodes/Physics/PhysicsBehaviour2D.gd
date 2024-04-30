@@ -1,6 +1,6 @@
 tool
 class_name PhysicsBehaviour2D
-extends Component2D
+extends NodeCore2D
 
 const EMPTY_VALUE := 0
 const EMPTY_VELOCITY := Vector2.ZERO
@@ -13,6 +13,18 @@ var move_data : Resource = null setget set_move_data,get_move_data
 var gravity_data : Resource = null setget set_gravity_data,get_gravity_data
 
 var velocity := Vector2.ZERO setget set_velocity,get_velocity
+
+
+func apply_dash(impulse: Vector2) -> void:
+	apply_impulse(impulse)
+
+
+func apply_dash_x(impulse: Vector2) -> void:
+	apply_impulse_x(impulse.x)
+
+
+func apply_dash_y(impulse: Vector2) -> void:
+	apply_impulse_y(impulse.y)
 
 
 func apply_jump() -> void:

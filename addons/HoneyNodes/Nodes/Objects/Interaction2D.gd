@@ -1,0 +1,2 @@
+class_name Interaction2D
+extends AreaCore2D

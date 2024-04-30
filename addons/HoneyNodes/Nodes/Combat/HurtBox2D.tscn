@@ -6,3 +6,4 @@
 collision_mask = 0
 monitoring = false
 script = ExtResource( 1 )
+damage_source = null

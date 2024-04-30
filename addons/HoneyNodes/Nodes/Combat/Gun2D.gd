@@ -1,0 +1,2 @@
+class_name Gun2D
+extends SpawnerCore2D
