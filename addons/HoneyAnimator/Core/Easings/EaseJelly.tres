@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/HoneyAnimator/Core/Easings/EaseJelly.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+amplitude = 1.0
+frequency = 1.0
